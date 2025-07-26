@@ -1,0 +1,22 @@
+*,
+*::before,
+*::after {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+:root {
+	--accent: hsl(172, 67%, 45%);
+	--darkGreen: hsl(183, 100%, 15%);
+	--veryLightGrey: hsl(189, 47%, 97%);
+	--lighterGrey: hsl(185, 41%, 84%);
+	--lightGrey: hsl(184, 14%, 56%);
+	--grey: hsl(186, 14%, 43%);
+}
+
+html {
+	font-size: 62.5%;
+}
+body {
+	font-family: "Space Mono", sans-serif;
+}
