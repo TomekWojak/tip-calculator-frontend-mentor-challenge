@@ -60,6 +60,10 @@ body {
 		line-height: 24px;
 		color: var(--grey);
 		font-weight: 600;
+
+		&--tip {
+			margin-block-end: 0.5em;
+		}
 	}
 	.input-error {
 		display: inline-block;
@@ -76,7 +80,7 @@ body {
 	&__custom-input {
 		display: block;
 		width: 100%;
-		padding: var(--spacing-200) var(--spacing-100);
+		padding: 0.8em;
 		border: 2px solid transparent;
 		background-color: var(--veryLightGrey);
 		color: var(--accent);
@@ -260,7 +264,9 @@ body {
 		&__btn {
 			transition: background-color 0.2s, color 0.2s;
 
-			&:hover {
+			&:hover,
+			&:focus-visible {
+				outline: none;
 				background-color: var(--lightGreen);
 				color: var(--accent);
 			}
@@ -278,7 +284,9 @@ body {
 		&__reset-btn {
 			transition: background-color 0.2s;
 
-			&:not(:disabled):hover {
+			&:not(:disabled):hover,
+			&:not(:disabled):focus-visible {
+				outline: none;
 				background-color: var(--resetBtnHover);
 			}
 		}
