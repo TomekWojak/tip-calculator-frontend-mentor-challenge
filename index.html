@@ -15,8 +15,38 @@
 </head>
 
 <body>
+  <main>
+    <section class="splitter">
+      <h1 class="title">spli<span class="title">tter</span></h1>
+      <div class="splitter__content">
+        <div class="splitter__main">
+          <span class="splitter__title">Bill</span>
 
-  Bill
+          <div class="splitter__input-box">
+            <input dir="rtl" type="number" class="splitter__input splitter__input--bill" placeholder="0">
+            <img src="/images/icon-dollar.svg" width="11" height="17" loading="lazy" alt="" class="splitter__icon">
+          </div>
+          <div class="splitter__selection">
+            <span class="splitter__title">Select Tip %</span>
+            <div class="splitter__selection-box">
+              <button class="splitter__btn" data-value="0.05">5%</button>
+              <button class="splitter__btn" data-value="0.1">10%</button>
+              <button class="splitter__btn" data-value="0.15">15%</button>
+              <button class="splitter__btn" data-value="0.25">25%</button>
+              <button class="splitter__btn" data-value="0.50">50%</button>
+              <input type="number" dir="rtl" class="splitter__custom-input visually-hidden" placeholder="Custom">
+            </div>
+          </div>
+          <span class="splitter__title">Number of People</span>
+          <div class="splitter__input-box">
+            <input dir="rtl" type="number" class="splitter__input splitter__input--people" placeholder="0">
+            <img src="/images/icon-person.svg" width="13" height="16" loading="lazy" alt="" class="splitter__icon">
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <!-- Bill
 
   Select Tip %
   5%
@@ -34,11 +64,10 @@
   Total
   / person
 
-  Reset
+  Reset -->
 
-  <div class="attribution">
-    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>.
-    Coded by <a href="#">Your Name Here</a>.
+
+  <!-- Challenge by Frontend Mentor - https://www.frontendmentor.io?ref=challenge  -->
   </div>
 </body>
 
