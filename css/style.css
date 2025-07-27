@@ -82,6 +82,7 @@ body {
   position: relative;
 }
 .splitter__input, .splitter__custom-input {
+  text-align: right;
   display: block;
   width: 100%;
   padding: 0.8em;
@@ -219,6 +220,9 @@ body {
   background-color: var(--resetBtn);
   color: var(--resetBtnTxt);
   cursor: not-allowed;
+}
+.splitter__reset-btn:active {
+  transform: scale(0.98);
 }
 
 @media (500px <= width) {

@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", function () {
 	const totalSum = document.querySelector(".splitter__tip-total");
 	const resetBtn = document.querySelector(".splitter__reset-btn");
 	const inputs = [billInput, peopleInput];
-
+	const customError = document.querySelector(".input-error-custom");
 	const billRegexp = /^-?\d+(\.\d+)?$/;
 	const peopleRegexp = /^[0-9]\d*$/;
 	let parent;
@@ -63,32 +63,69 @@ document.addEventListener("DOMContentLoaded", function () {
 
 		if (errorCount === 0) {
 			unlockBtn();
-			calculateBill(billInput, peopleInput);
+			calculateBill();
 		} else {
 			lockBtn();
 		}
 	};
 
-	const calculateBill = (input1, input2) => {
-		let value1 = parseFloat(input1.value);
-		let value2 = parseFloat(input2.value);
+	const calculateBill = () => {
+		let value1 = parseFloat(billInput.value);
+		let value2 = parseFloat(peopleInput.value);
 		let tipAmount;
 		let total;
 
 		if (selectedValue !== null) {
 			tipAmount = (value1 * selectedValue) / value2;
 			total = value1 / value2 + tipAmount;
-
 			tipInfo.textContent = `$${tipAmount.toFixed(2)}`;
-			totalSum.textContent = `$${total.toFixed(2)}`;
 		} else {
 			total = value1 / value2;
 		}
+		totalSum.textContent = `$${total.toFixed(2)}`;
 	};
-
-    customTipInput.addEventListener('click', () => {
-        tipBtns.forEach(btn => btn.classList.remove('selected'))
-    })
+	const resetAll = () => {
+		selectedValue = null;
+		billInput.value = "";
+		peopleInput.value = "";
+		customTipInput.value = "";
+		tipBtns.forEach((btn) => btn.classList.remove("selected"));
+		tipInfo.textContent = "$0.00";
+		totalSum.textContent = "$0.00";
+		lockBtn();
+		inputs.forEach((input) => input.classList.add("error"));
+	};
+	customTipInput.addEventListener("click", () => {
+		tipBtns.forEach((btn) => btn.classList.remove("selected"));
+	});
+	customTipInput.addEventListener("keyup", (e) => {
+		if (e.key === "Tab") {
+			tipBtns.forEach((btn) => btn.classList.remove("selected"));
+		}
+	});
+	customTipInput.addEventListener("input", () => {
+		let value = parseFloat(customTipInput.value);
+		if (billRegexp.test(value)) {
+			if (customTipInput.value === "") {
+				customError.style.visibility = "visible";
+				customError.textContent = "Can't be blank";
+				customTipInput.classList.add("error");
+			} else if (value <= 0) {
+				customError.style.visibility = "visible";
+				customError.textContent = "Wrong value";
+				customTipInput.classList.add("error");
+			} else {
+				selectedValue = value / 100;
+				customError.style.visibility = "hidden";
+				customTipInput.classList.remove("error");
+				countErrors();
+			}
+		} else {
+			customTipInput.classList.add("error");
+			customError.style.visibility = "visible";
+			customError.textContent = "Wrong value";
+		}
+	});
 	tipBtns.forEach((btn) =>
 		btn.addEventListener("click", (e) => {
 			tipBtns.forEach((btn) => btn.classList.remove("selected"));
@@ -96,6 +133,9 @@ document.addEventListener("DOMContentLoaded", function () {
 			selectedValue = parseFloat(e.target.dataset.value);
 			e.target.classList.add("selected");
 			countErrors();
+			customError.style.visibility = "hidden";
+			customTipInput.classList.remove("error");
+			customTipInput.value = "";
 		})
 	);
 	billInput.addEventListener("input", () => {
@@ -106,6 +146,7 @@ document.addEventListener("DOMContentLoaded", function () {
 			"Must be greater than zero"
 		);
 	});
+	resetBtn.addEventListener("click", resetAll);
 	peopleInput.addEventListener("input", () => {
 		handleSplitter(peopleInput, peopleRegexp, "Can't be zero");
 	});

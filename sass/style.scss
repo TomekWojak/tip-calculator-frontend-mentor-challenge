@@ -82,6 +82,7 @@ body {
 	}
 	&__input,
 	&__custom-input {
+		text-align: right;
 		display: block;
 		width: 100%;
 		padding: 0.8em;
@@ -218,6 +219,9 @@ body {
 			background-color: var(--resetBtn);
 			color: var(--resetBtnTxt);
 			cursor: not-allowed;
+		}
+		&:active {
+			transform: scale(0.98);
 		}
 	}
 }
