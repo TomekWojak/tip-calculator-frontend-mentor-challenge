@@ -14,6 +14,9 @@
   --lightGrey: hsl(184, 14%, 56%);
   --grey: hsl(186, 14%, 43%);
   --titleGray: hsl(180, 25%, 32%);
+  --resetBtn: hsl(183, 79%, 24%);
+  --resetBtnHover: hsl(173, 61%, 77%);
+  --resetBtnTxt: hsl(183, 85%, 21%);
   --white: hsl(0, 0%, 100%);
   --spacing-100: 0.8rem;
   --spacing-200: 1.6rem;
@@ -147,6 +150,56 @@ body {
   font-size: 2rem;
   opacity: 1;
 }
+.splitter__results {
+  margin-block-start: 4em;
+  padding: var(--spacing-300);
+  background-color: var(--accent);
+  border-radius: 15px;
+}
+.splitter__results-box {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.splitter__results-box:first-child {
+  margin-block-end: 2.4em;
+}
+.splitter__tip-info {
+  color: var(--white);
+  font-weight: 600;
+  font-size: clamp(1.3rem, 3vw, 1.7rem);
+  line-height: 24px;
+}
+.splitter__info {
+  color: var(--lightGrey);
+  font-weight: 600;
+  font-size: clamp(1rem, 3vw, 1.4rem);
+  line-height: 22px;
+}
+.splitter__tip-amount {
+  font-size: clamp(2.6rem, 6vw, 5rem);
+  font-weight: 700;
+  color: var(--lightGreen);
+  letter-spacing: -0.67px;
+}
+.splitter__reset-btn {
+  display: block;
+  width: 100%;
+  margin-block-start: 2em;
+  padding: 0.7em 1.4em;
+  border-radius: 5px;
+  border: none;
+  font-family: inherit;
+  font-weight: 600;
+  font-size: clamp(1.5rem, 3vw, 1.8rem);
+  color: var(--accent);
+  background-color: var(--lightGreen);
+  cursor: pointer;
+}
+.splitter__reset-btn.disabled {
+  background-color: var(--resetBtn);
+  color: var(--resetBtnTxt);
+}
 
 @media (576px <= width) {
   .splitter__btn, .splitter__custom-input {
@@ -165,10 +218,13 @@ body {
   .splitter__btn:nth-child(4) {
     margin: 0;
   }
+  .splitter__results {
+    padding: var(--spacing-400);
+  }
 }
 @media (768px <= width) {
   .splitter__content {
-    padding: var(--spacing-1000) var(--spacing-600);
+    padding: var(--spacing-1000);
   }
   .splitter__btn {
     transition: background-color 0.2s, color 0.2s;
@@ -185,5 +241,14 @@ body {
   }
   .splitter__custom-input::placeholder {
     font-size: 2.5rem;
+  }
+  .splitter__results {
+    padding: var(--spacing-600);
+  }
+  .splitter__reset-btn {
+    transition: background-color 0.2s;
+  }
+  .splitter__reset-btn:not(.disabled):hover {
+    background-color: var(--resetBtnHover);
   }
 }/*# sourceMappingURL=style.css.map */

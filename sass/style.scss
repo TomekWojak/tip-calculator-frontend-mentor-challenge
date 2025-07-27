@@ -13,6 +13,9 @@
 	--lightGrey: hsl(184, 14%, 56%);
 	--grey: hsl(186, 14%, 43%);
 	--titleGray: hsl(180, 25%, 32%);
+	--resetBtn: hsl(183, 79%, 24%);
+	--resetBtnHover: hsl(173, 61%, 77%);
+	--resetBtnTxt: hsl(183, 85%, 21%);
 	--white: hsl(0, 0%, 100%);
 	--spacing-100: 0.8rem;
 	--spacing-200: 1.6rem;
@@ -41,10 +44,6 @@ body {
 }
 
 .splitter {
-	// display: flex;
-	// flex-direction: column;
-	// justify-content: space-between;
-	// min-height: 100vh;
 	padding-block-start: 4em;
 
 	&__content {
@@ -147,6 +146,59 @@ body {
 			opacity: 1;
 		}
 	}
+
+	&__results {
+		margin-block-start: 4em;
+		padding: var(--spacing-300);
+		background-color: var(--accent);
+		border-radius: 15px;
+	}
+	&__results-box {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+
+		&:first-child {
+			margin-block-end: 2.4em;
+		}
+	}
+	&__tip-info {
+		color: var(--white);
+		font-weight: 600;
+		font-size: clamp(1.3rem, 3vw, 1.7rem);
+		line-height: 24px;
+	}
+	&__info {
+		color: var(--lightGrey);
+		font-weight: 600;
+		font-size: clamp(1rem, 3vw, 1.4rem);
+		line-height: 22px;
+	}
+	&__tip-amount {
+		font-size: clamp(2.6rem, 6vw, 5rem);
+		font-weight: 700;
+		color: var(--lightGreen);
+		letter-spacing: -0.67px;
+	}
+	&__reset-btn {
+		display: block;
+		width: 100%;
+		margin-block-start: 2em;
+		padding: 0.7em 1.4em;
+		border-radius: 5px;
+		border: none;
+		font-family: inherit;
+		font-weight: 600;
+		font-size: clamp(1.5rem, 3vw, 1.8rem);
+		color: var(--accent);
+		background-color: var(--lightGreen);
+		cursor: pointer;
+
+		&.disabled {
+			background-color: var(--resetBtn);
+			color: var(--resetBtnTxt);
+		}
+	}
 }
 
 @media (576px <= width) {
@@ -167,13 +219,17 @@ body {
 		&__btn:nth-child(4) {
 			margin: 0;
 		}
+
+		&__results {
+			padding: var(--spacing-400);
+		}
 	}
 }
 
 @media (768px <= width) {
 	.splitter {
 		&__content {
-			padding: var(--spacing-1000) var(--spacing-600);
+			padding: var(--spacing-1000);
 		}
 		&__btn {
 			transition: background-color 0.2s, color 0.2s;
@@ -189,6 +245,16 @@ body {
 		}
 		&__custom-input::placeholder {
 			font-size: 2.5rem;
+		}
+		&__results {
+			padding: var(--spacing-600);
+		}
+		&__reset-btn {
+			transition: background-color 0.2s;
+
+			&:not(.disabled):hover {
+				background-color: var(--resetBtnHover);
+			}
 		}
 	}
 }
