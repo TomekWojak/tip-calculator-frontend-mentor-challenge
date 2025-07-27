@@ -20,11 +20,15 @@
       <h1 class="title">spli<span class="title">tter</span></h1>
       <div class="splitter__content">
         <div class="splitter__main">
-          <span class="splitter__title">Bill</span>
-
-          <div class="splitter__input-box">
-            <input dir="rtl" type="number" class="splitter__input splitter__input--bill" placeholder="0">
-            <img src="/images/icon-dollar.svg" width="11" height="17" loading="lazy" alt="" class="splitter__icon">
+          <div class="splitter__billing-section">
+            <div class="splitter__billing-header">
+              <span class="splitter__title">Bill</span>
+              <span class="input-error">error</span>
+            </div>
+            <div class="splitter__input-box">
+              <input dir="rtl" type="number" class="splitter__input splitter__input--bill" placeholder="0">
+              <img src="/images/icon-dollar.svg" width="11" height="17" loading="lazy" alt="" class="splitter__icon">
+            </div>
           </div>
           <div class="splitter__selection">
             <span class="splitter__title">Select Tip %</span>
@@ -37,10 +41,15 @@
               <input type="number" dir="rtl" class="splitter__custom-input visually-hidden" placeholder="Custom">
             </div>
           </div>
-          <span class="splitter__title">Number of People</span>
-          <div class="splitter__input-box">
-            <input dir="rtl" type="number" class="splitter__input splitter__input--people" placeholder="0">
-            <img src="/images/icon-person.svg" width="13" height="16" loading="lazy" alt="" class="splitter__icon">
+          <div class="splitter__billing-section">
+            <div class="splitter__billing-header">
+              <span class="splitter__title">Number of People</span>
+              <span class="input-error">error</span>
+            </div>
+            <div class="splitter__input-box">
+              <input dir="rtl" type="number" class="splitter__input splitter__input--people" placeholder="0">
+              <img src="/images/icon-person.svg" width="13" height="16" loading="lazy" alt="" class="splitter__icon">
+            </div>
           </div>
         </div>
 
@@ -59,7 +68,7 @@
             </div>
             <span class="splitter__tip-amount">$0.00</span>
           </div>
-          <button class="splitter__reset-btn">RESET</button>
+          <button class="splitter__reset-btn" disabled>RESET</button>
         </div>
 
       </div>
