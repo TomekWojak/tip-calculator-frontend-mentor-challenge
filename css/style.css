@@ -20,6 +20,7 @@
   --spacing-300: 2.4rem;
   --spacing-400: 3.2rem;
   --spacing-600: 4.8rem;
+  --spacing-1000: 8rem;
 }
 
 html {
@@ -33,7 +34,7 @@ body {
 
 .title {
   display: block;
-  margin-block-end: 2em;
+  margin-block-end: 1.5em;
   text-align: center;
   text-transform: uppercase;
   color: var(--titleGray);
@@ -45,6 +46,8 @@ body {
   padding-block-start: 4em;
 }
 .splitter__content {
+  width: min(100%, 700px);
+  margin: 0 auto;
   padding: var(--spacing-300) var(--spacing-400);
   background-color: var(--white);
   border-radius: 25px 25px 0 0;
@@ -52,7 +55,7 @@ body {
 .splitter__title {
   display: block;
   margin-block-end: 0.5em;
-  font-size: 1.6em;
+  font-size: clamp(1.6rem, 3vw, 1.75rem);
   line-height: 24px;
   color: var(--grey);
   font-weight: 600;
@@ -72,6 +75,7 @@ body {
   border-radius: 5px;
   font-size: 1.8rem;
   caret-color: var(--lightGreen);
+  transition: border 0.2s;
 }
 .splitter__input::-webkit-outer-spin-button, .splitter__input::-webkit-inner-spin-button, .splitter__custom-input::-webkit-outer-spin-button, .splitter__custom-input::-webkit-inner-spin-button {
   -webkit-appearance: none;
@@ -128,16 +132,58 @@ body {
 }
 .splitter__custom-input {
   padding: var(--spacing-100);
-  width: calc(50% - 0.25em);
+  width: calc(50% - 0.3em);
   border-radius: 5px;
 }
 .splitter__custom-input::-moz-placeholder {
   text-align: center;
   color: var(--grey);
+  font-size: 2rem;
   opacity: 1;
 }
 .splitter__custom-input::placeholder {
   text-align: center;
   color: var(--grey);
+  font-size: 2rem;
   opacity: 1;
+}
+
+@media (576px <= width) {
+  .splitter__btn, .splitter__custom-input {
+    padding: var(--spacing-200) var(--spacing-100);
+    width: calc(33.33% - 0.5em);
+  }
+  .splitter__custom-input::-moz-placeholder {
+    font-size: 2.3rem;
+  }
+  .splitter__custom-input::placeholder {
+    font-size: 2.3rem;
+  }
+  .splitter__btn:nth-child(1), .splitter__btn:nth-child(2), .splitter__btn:nth-child(3) {
+    margin-block-end: 1em;
+  }
+  .splitter__btn:nth-child(4) {
+    margin: 0;
+  }
+}
+@media (768px <= width) {
+  .splitter__content {
+    padding: var(--spacing-1000) var(--spacing-600);
+  }
+  .splitter__btn {
+    transition: background-color 0.2s, color 0.2s;
+  }
+  .splitter__btn:hover {
+    background-color: var(--lightGreen);
+    color: var(--accent);
+  }
+  .splitter__input, .splitter__custom-input {
+    font-size: 2rem;
+  }
+  .splitter__custom-input::-moz-placeholder {
+    font-size: 2.5rem;
+  }
+  .splitter__custom-input::placeholder {
+    font-size: 2.5rem;
+  }
 }/*# sourceMappingURL=style.css.map */
