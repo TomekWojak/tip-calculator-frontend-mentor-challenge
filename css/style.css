@@ -74,6 +74,10 @@ body {
   color: var(--error);
   font-weight: 600;
 }
+.splitter .input-error-custom {
+  margin-block-start: 0.5em;
+  margin-inline-start: auto;
+}
 .splitter__input-box {
   position: relative;
 }
@@ -144,7 +148,7 @@ body {
 .splitter__btn:nth-child(5), .splitter__btn:nth-child(6) {
   margin-block-end: 0;
 }
-.splitter__btn.checked {
+.splitter__btn.selected {
   color: var(--accent);
   background-color: var(--lightGreen);
 }
@@ -261,7 +265,7 @@ body {
   }
   .splitter__btn:hover, .splitter__btn:focus-visible {
     outline: none;
-    background-color: var(--lightGreen);
+    background-color: var(--lighterGrey);
     color: var(--accent);
   }
   .splitter__input, .splitter__custom-input {

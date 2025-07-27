@@ -3,8 +3,8 @@ document.addEventListener("DOMContentLoaded", function () {
 	const peopleInput = document.querySelector(".splitter__input--people");
 	const tipBtns = document.querySelectorAll(".splitter__btn");
 	const customTipInput = document.querySelector(".splitter__custom-input");
-	const tipAmount = document.querySelector(".splitter__tip-tip");
-	const total = document.querySelector(".splitter__tip-total");
+	const tipInfo = document.querySelector(".splitter__tip-tip");
+	const totalSum = document.querySelector(".splitter__tip-total");
 	const resetBtn = document.querySelector(".splitter__reset-btn");
 	const inputs = [billInput, peopleInput];
 
@@ -12,6 +12,7 @@ document.addEventListener("DOMContentLoaded", function () {
 	const peopleRegexp = /^[0-9]\d*$/;
 	let parent;
 	let errorTxt;
+	let selectedValue = null;
 
 	const handleSplitter = (input, regexp, msg1, msg2) => {
 		let value = parseFloat(input.value);
@@ -48,6 +49,9 @@ document.addEventListener("DOMContentLoaded", function () {
 	const unlockBtn = () => {
 		resetBtn.removeAttribute("disabled");
 	};
+	const lockBtn = () => {
+		resetBtn.setAttribute("disabled", "true");
+	};
 
 	const countErrors = () => {
 		let errorCount = 0;
@@ -59,9 +63,41 @@ document.addEventListener("DOMContentLoaded", function () {
 
 		if (errorCount === 0) {
 			unlockBtn();
+			calculateBill(billInput, peopleInput);
+		} else {
+			lockBtn();
 		}
 	};
 
+	const calculateBill = (input1, input2) => {
+		let value1 = parseFloat(input1.value);
+		let value2 = parseFloat(input2.value);
+		let tipAmount;
+		let total;
+
+		if (selectedValue !== null) {
+			tipAmount = (value1 * selectedValue) / value2;
+			total = value1 / value2 + tipAmount;
+
+			tipInfo.textContent = `$${tipAmount.toFixed(2)}`;
+			totalSum.textContent = `$${total.toFixed(2)}`;
+		} else {
+			total = value1 / value2;
+		}
+	};
+
+    customTipInput.addEventListener('click', () => {
+        tipBtns.forEach(btn => btn.classList.remove('selected'))
+    })
+	tipBtns.forEach((btn) =>
+		btn.addEventListener("click", (e) => {
+			tipBtns.forEach((btn) => btn.classList.remove("selected"));
+
+			selectedValue = parseFloat(e.target.dataset.value);
+			e.target.classList.add("selected");
+			countErrors();
+		})
+	);
 	billInput.addEventListener("input", () => {
 		handleSplitter(
 			billInput,

@@ -73,6 +73,10 @@ body {
 		color: var(--error);
 		font-weight: 600;
 	}
+	.input-error-custom {
+		margin-block-start: 0.5em;
+		margin-inline-start: auto;
+	}
 	&__input-box {
 		position: relative;
 	}
@@ -145,7 +149,7 @@ body {
 		&:nth-child(6) {
 			margin-block-end: 0;
 		}
-		&.checked {
+		&.selected {
 			color: var(--accent);
 			background-color: var(--lightGreen);
 		}
@@ -267,7 +271,7 @@ body {
 			&:hover,
 			&:focus-visible {
 				outline: none;
-				background-color: var(--lightGreen);
+				background-color: var(--lighterGrey);
 				color: var(--accent);
 			}
 		}
